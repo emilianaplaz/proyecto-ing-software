@@ -1,10 +1,11 @@
 import React from 'react';
-import './HeaderLanding.css'
+import './HeaderLanding.css';
+import logoUnimet from '../assets/Images/LogoUnimet.jpg';
 
 function HeaderLanding() {
   return (
     <header className="header">
-        <img src="https://img.v3.goliiive.com/venue/logo/450.jpg?v=1719939682" alt="LogoUnimet" className="logo" />      
+        <img src={logoUnimet} alt="logo" style={{ width: '50px', height: 'auto' }}/>      
         <h1 className="title-header">Reservas Unimet</h1>
     </header>
   );

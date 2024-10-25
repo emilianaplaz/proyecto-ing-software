@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './LandingPage.module.css';
+import './LandingPage.css';
 import HeaderLanding from '../Components/HeaderLanding';
+import logoUnimet from '../assets/Images/LogoUnimet.jpg';
+import logoGoogle from '../assets/Images/googleLogo.jpg';
 
 function LandingPage() {
   return (
@@ -11,21 +13,35 @@ function LandingPage() {
         </div>
 
     
-        <div className="container">
+      
+<div className="container">
+    <div className="container-left">
         <div className="title-landing">
-            <h1 className="title">Reserva tus salones</h1>
-            <img src="/logo.png" alt="Logo Unimet" className="logo" />
+            <h1 className="title-landing">Reserva tus salones</h1>
         </div>
         <div className="button-container">
-            <Link to="/login" className="button">Iniciar sesión</Link>
-            <Link to="/register" className="button">Registrarse</Link>
-            <button className="button google-button">
-            <i className="fab fa-google"></i>
+            <button className="iniciar-sesion-btn">Iniciar Sesión</button>
+            <button className="registrarse-btn">Registrarse</button>
+        </div>
+        <div className="google-button-container">
+            <button className="google-button">
+                <img src={logoGoogle} alt="Google Logo" className="google-logo" />
             </button>
+        </div>
+    </div>
 
+    <div className="container-right">
+        <div className="logo-landing">
+            <img src={logoUnimet} alt="logo" />
         </div>
+    </div>
+</div>
+
+
+
+        
         </div>
-     </div>
+    
   );
 }
 
