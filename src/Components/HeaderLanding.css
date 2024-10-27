@@ -1,0 +1,24 @@
+/* HeaderLanding.module.css */
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px; /* Reduced padding */
+    position: fixed; /* Fix the header at the top */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    width: 100%; /* Full width */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+.logo {
+    width: 50px; /* Adjust the size of the logo */
+    height: 50px; /* Maintain aspect ratio */
+    margin-right: 10px; /* Reduced margin */
+}
+
+.title-header {
+    font-size: 1.0rem; /* Smaller font size */
+    font-weight: bold;
+    margin: 0; /* Remove default margin */
+}
