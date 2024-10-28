@@ -23,7 +23,7 @@ const SignUp = () => {
     }
 
     // Determinar el rol basado en el correo
-    const rol = email.endsWith('@correo.unimet.edu.ve') ? 'estudiante' : 'administrador';
+    const rol = email.endsWith('@correo.unimet.edu.ve') ? 'estudiante' : 'profesor';
     
 
     try {
