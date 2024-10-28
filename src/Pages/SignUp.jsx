@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { auth } from '../credenciales'; // Asegúrate de importar tu configuración de Firebase
+import { auth } from '../credenciales';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import './SignUp.css';
 
@@ -13,6 +13,14 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     setError('');
+    
+    // Validar el correo electrónico
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@(correo\.unimet\.edu\.ve|unimet\.edu\.ve)$/;
+    if (!emailPattern.test(email)) {
+      setError('Debe ingresar un correo Unimet');
+      return;
+    }
+    
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
