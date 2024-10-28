@@ -1,41 +1,39 @@
 import React, { useState } from 'react';
 import { auth } from '../credenciales'; 
-import { sendPasswordResetEmail, fetchSignInMethodsForEmail } from 'firebase/auth';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
 import './ForgotPassword.css'; 
+
+const db = getFirestore();
+
+const isEmailRegistered = async (email) => {
+  const q = query(collection(db, 'usuarios'), where('email', '==', email));
+  const querySnapshot = await getDocs(q);
+  return !querySnapshot.empty; // Retorna true si hay al menos un documento
+};
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
-
   const handleResetPassword = async (e) => {
     e.preventDefault();
     setMessage('');
     setError('');
 
+    // Verifica si el correo está registrado
+    const isRegistered = await isEmailRegistered(email);
+    if (!isRegistered) {
+      setError('El correo electrónico no está registrado.');
+      return;
+    }
+
     try {
-        console.log("Correo ingresado:", email);
-
-      // Verificar si el correo electrónico está registrado
-      const signInMethods = await fetchSignInMethodsForEmail(auth, email);
-      if (signInMethods.length === 0) {
-        setError('Este correo no está registrado.');
-        return;
-      }
-
-      // Enviar el correo de restablecimiento de contraseña
       await sendPasswordResetEmail(auth, email);
       setMessage('Se ha enviado un correo de restablecimiento de contraseña.');
     } catch (err) {
-      // Manejo de errores más específico
-      if (err.code === 'auth/invalid-email') {
-        setError('Correo electrónico no válido.');
-      } else if (err.code === 'auth/user-not-found') {
-        setError('Usuario no encontrado.');
-      } else {
-        setError('Error al enviar el correo: ' + err.message);
-      }
+      setError(err.message);
     }
   };
 
