@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { auth } from '../credenciales';
+import { auth, db } from '../credenciales';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { setDoc, doc, getDoc } from 'firebase/firestore'; //
 import './SignUp.css';
 
 const SignUp = () => {
@@ -20,11 +21,32 @@ const SignUp = () => {
       setError('Debe ingresar un correo Unimet');
       return;
     }
+
+    // Determinar el rol basado en el correo
+    const rol = email.endsWith('@correo.unimet.edu.ve') ? 'estudiante' : 'administrador';
     
 
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      // Aquí puedes agregar lógica adicional después de un registro exitoso
+      // Verificar si la cédula ya existe
+      const ciDocRef = doc(db, 'usuarios', ci);
+      const ciDoc = await getDoc(ciDocRef);
+
+      if (ciDoc.exists()) {
+        setError('Ya existe un usuario con la misma CI.');
+        return;
+      }
+
+      // Crear usuario en Firebase Authentication
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Agregar usuario a Firestore usando "ci" como ID del documento
+      await setDoc(doc(db, 'usuarios', ci), {
+        name,
+        email,
+        rol,
+        createdAt: new Date(),
+      });
       console.log('Usuario registrado:', name, ci, email);
     } catch (err) {
       setError(err.message);
