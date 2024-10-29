@@ -1,0 +1,77 @@
+.container {
+  display: flex; /* Use Flexbox to position children in a row */
+  justify-content: space-between; /* Optional: add space between the containers */
+  align-items: center; /* Center items vertically */
+  width: 100%;
+}
+
+.container-left,
+.container-right{
+  flex: 1; 
+
+}
+
+.container-left {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.title-landing {
+  text-align: center; 
+  width: 100%; 
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 4rem;
+  color: #000;
+}
+
+
+.button-container {
+  display: flex; 
+  gap: 60px;
+  width: 100%;
+  justify-content: center; 
+}
+
+.iniciar-sesion-btn,
+.registrarse-btn{
+  background-color: #112140;
+  color: white;
+  font-size: 1.0rem;
+  border-radius: 50px;
+  width: 30%;
+  height: 3rem;
+  font-family: 'Montserrat';
+  font-weight: 400;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.iniciar-sesion-btn:hover,
+.registrarse-btn:hover{
+    background-color: #ff8201; 
+    transform: scale(1.05);
+    border:none;
+
+}
+
+.google-button-container{
+  justify-content: center;
+  margin-top: 30px;
+}
+
+
+.google-button {
+  background: none; 
+  border: none; /* Remove default button border */
+  padding: 0; /* Remove padding */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.google-button img {
+  width: 48px; 
+  height: auto; 
+} 
+
+
