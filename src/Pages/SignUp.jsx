@@ -3,6 +3,7 @@ import { auth, db } from '../credenciales';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { setDoc, doc, getDoc } from 'firebase/firestore'; //
 import './SignUp.css';
+import HeaderLanding from '../Components/HeaderLanding';
 
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -54,43 +55,49 @@ const SignUp = () => {
   };
 
   return (
-    <div className="signup-container">
-      <div className="signup-box">
-        <h3>Registrarse</h3>
-        {error && <p className="error">{error}</p>}
-        <form className="signup-form" onSubmit={handleSignUp}>
-          <input
-            type="text"
-            placeholder="Nombre y Apellido"
-            required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="CI"
-            required
-            pattern="\d+"
-            title="Solo se permiten números"
-            value={ci}
-            onChange={(e) => setCi(e.target.value)}
-          />
-          <input
-            type="email"
-            placeholder="Correo Unimet"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Contraseña"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit">Registrarse</button>
-        </form>
+    <div>
+      <div>
+          <HeaderLanding/> 
+        </div>
+
+      <div className="signup-container">
+        <div className="signup-box">
+          <h3>Registrarse</h3>
+          {error && <p className="error">{error}</p>}
+          <form className="signup-form" onSubmit={handleSignUp}>
+            <input
+              type="text"
+              placeholder="Nombre y Apellido"
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="CI"
+              required
+              pattern="\d+"
+              title="Solo se permiten números"
+              value={ci}
+              onChange={(e) => setCi(e.target.value)}
+            />
+            <input
+              type="email"
+              placeholder="Correo Unimet"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Contraseña"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit">Registrarse</button>
+          </form>
+        </div>
       </div>
     </div>
   );

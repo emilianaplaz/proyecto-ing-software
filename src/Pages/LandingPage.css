@@ -37,17 +37,15 @@
 
 .iniciar-sesion-btn,
 .registrarse-btn{
-  background-color: #112140; /* Color de fondo */
-  color: white; /* Color del texto */
-  font-size: 1.0rem; /* Tamaño de fuente */
-  border-radius: 50px; /* Bordes redondeados */
-  width: 30%; /* Ancho igual que el otro botón */
-  height: 3rem; /* Altura igual que el otro botón */
-  font-family: 'Montserrat'; /* Fuente */
-  font-weight: 400; /* Peso de fuente */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones */
-  border: none; /* Sin borde */
-  cursor: pointer; /* Cambiar cursor a puntero */
+  background-color: #112140;
+  color: white;
+  font-size: 1.0rem;
+  border-radius: 50px;
+  width: 30%;
+  height: 3rem;
+  font-family: 'Montserrat';
+  font-weight: 400;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .iniciar-sesion-btn:hover,

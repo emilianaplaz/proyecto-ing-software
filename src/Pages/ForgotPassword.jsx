@@ -3,13 +3,14 @@ import { auth } from '../credenciales';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
 import './ForgotPassword.css'; 
+import HeaderLanding from '../Components/HeaderLanding';
 
 const db = getFirestore();
 
 const isEmailRegistered = async (email) => {
   const q = query(collection(db, 'usuarios'), where('email', '==', email));
   const querySnapshot = await getDocs(q);
-  return !querySnapshot.empty; // Retorna true si hay al menos un documento
+  return !querySnapshot.empty; 
 };
 
 const ForgotPassword = () => {
@@ -38,23 +39,29 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="forgot-password-container">
-      <div className="forgot-password-box">
-        <h3>Restablecer Contraseña</h3>
-        {message && <p className="success">{message}</p>}
-        {error && <p className="error">{error}</p>}
-        <form className="forgot-password-form" onSubmit={handleResetPassword}>
-          <input
-            type="email"
-            placeholder="Correo Unimet"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <button type="submit">Enviar Correo</button>
-        </form>
+    <div>
+      <div>
+          <HeaderLanding/> 
       </div>
-    </div>
+
+      <div className="forgot-password-container">
+        <div className="forgot-password-box">
+          <h3>Restablecer Contraseña</h3>
+          {message && <p className="success">{message}</p>}
+          {error && <p className="error">{error}</p>}
+          <form className="forgot-password-form" onSubmit={handleResetPassword}>
+            <input
+              type="email"
+              placeholder="Correo Unimet"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <button type="submit">Enviar Correo</button>
+          </form>
+        </div>
+      </div>
+      </div>
   );
 };
 
