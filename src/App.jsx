@@ -5,6 +5,8 @@ import SignUp from './Pages/SignUp';
 import LandingPage from './Pages/LandingPage';
 import Login from './Pages/Login';
 import ForgotPassword from './Pages/ForgotPassword';
+import Reservas from './Pages/Reservas';
+import Profile from './Pages/Profile';
 
 function App() {
   return (
