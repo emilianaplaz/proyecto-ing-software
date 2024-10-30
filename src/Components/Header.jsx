@@ -26,10 +26,10 @@ function Header() {
   }; */
 
   return (
-    <header className="header"> 
-    ,<div className='header-left'>
+    <header className="header-home"> 
+    <div className='header-left'>
     <img src={logoUnimet} alt="logo" style={{ width: '50px', height: 'auto' }}/>  
-      <div className = 'title-header' >Reservas Unimet</div>
+      <div className = 'title-header-home' >Reservas Unimet</div>
     </div>
     <div className='header-right'>
       <div className="user">

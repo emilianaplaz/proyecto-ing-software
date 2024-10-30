@@ -1,4 +1,4 @@
-.header {
+.header-home {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -22,7 +22,7 @@
   align-items: center;
 }
 
-.header .title-header {
+.title-header-home {
     color: #fff;
     font-size: 1.0rem; 
     font-weight: bold;
@@ -47,6 +47,7 @@
   
   .dropdown {
     position: absolute;
+    color: black;
     top: 100%;
     right: 0;
     background-color: #fff;

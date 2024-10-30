@@ -1,4 +1,4 @@
-.container {
+.container-landing {
   display: flex; /* Use Flexbox to position children in a row */
   justify-content: space-between; /* Optional: add space between the containers */
   align-items: center; /* Center items vertically */
