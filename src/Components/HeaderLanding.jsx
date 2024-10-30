@@ -1,6 +1,6 @@
 import React from 'react';
-import logoUnimet from '../assets/Images/LogoUnimet.jpg';
 import './HeaderLanding.css';
+import logoUnimet from '../assets/Images/LogoUnimet.jpg';
 
 function HeaderLanding() {
   return (
