@@ -15,7 +15,7 @@ function App() {
       {/* <HeaderLanding /> */}
       <Routes>
         {/* Set LandingPage as the default route */}
-        <Route path="/" element={<HomeReservas/>} />
+        <Route path="/" element={<LandingPage/>} />
         {/* Define other routes like HomeReservas and SignUp */}
         <Route path="/reservas" element={<HomeReservas />} />
         <Route path="/signup" element={<SignUp />} />
