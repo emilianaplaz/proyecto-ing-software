@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomeReservas from './Pages/HomeReservas';
 import SignUp from './Pages/SignUp';
 import LandingPage from './Pages/LandingPage';
+import Login from './Pages/Login';
+import ForgotPassword from './Pages/ForgotPassword';
+import Reservas from './Pages/Reservas';
+import Profile from './Pages/Profile';
 
 function App() {
   return (
@@ -15,6 +19,8 @@ function App() {
         {/* Define other routes like HomeReservas and SignUp */}
         <Route path="/reservas" element={<HomeReservas />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
       </div>
     </Router>

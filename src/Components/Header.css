@@ -9,14 +9,24 @@
     width: 100%;
     z-index:  1000;
     background-color: #112140;
-    color: white; /* Add color for better contrast */
+    color: white; 
   }
   
-.title-header {
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header .title-header {
     color: #fff;
-    font-size: 1.0rem; /* Smaller font size */
+    font-size: 1.0rem; 
     font-weight: bold;
-    margin: 0; /* Remove default margin */
+    margin: 0; 
 }
   
   .header .logo {
@@ -32,7 +42,7 @@
     height: 30px;
     cursor: pointer;
     border-radius: 50%;
-    margin-right: 60px; /* Add margin to create space between the logo and profile picture */
+    margin-right: 60px; 
   }
   
   .dropdown {
