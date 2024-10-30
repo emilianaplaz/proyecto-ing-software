@@ -21,9 +21,7 @@ function LandingPage() {
         </div>
         <div className="button-container">
             <button className="iniciar-sesion-btn">Iniciar Sesión</button>
-            <Link to="/signup" className="registrarse-link">
-              Registrarse
-            </Link>
+            <button className="registrarse-btn">Registrarse</button>
         </div>
         <div className="google-button-container">
             <button className="google-button">
