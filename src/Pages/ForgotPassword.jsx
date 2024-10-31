@@ -13,7 +13,7 @@ const isEmailRegistered = async (email) => {
   return !querySnapshot.empty; 
 };
 
-const ForgotPassword = () => {
+const ForgotPassword = () => { 
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
