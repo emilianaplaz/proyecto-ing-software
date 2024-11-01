@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Header.css';
 import logoUnimet from '../assets/Images/LogoUnimet.jpg';
 import Usuario from '../assets/Images/Usuario.jpg';
+import { Link } from 'react-router-dom';
+
 
 
 function Header() {
@@ -37,7 +39,9 @@ function Header() {
         {showDropdown && (
           <div className="dropdown">
             <ul>
-              <li>Perfil</li>
+              <li>
+                <Link to="/profile">Perfil</Link> 
+              </li>
               <li>Reservas</li>
               <li>Cerrar Sesión</li>
             </ul>
