@@ -23,6 +23,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/mis-reservas" element={<Reservas />} />
+
         </Routes>
       </div>
     </Router>

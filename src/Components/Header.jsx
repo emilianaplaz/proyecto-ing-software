@@ -31,7 +31,9 @@ function Header() {
     <header className="header-home"> 
     <div className='header-left'>
     <img src={logoUnimet} alt="logo" style={{ width: '50px', height: 'auto' }}/>  
-      <div className = 'title-header-home' >Reservas Unimet</div>
+      <div className = 'title-header-home' >
+      <a href="/reservas">Reservas Unimet</a>
+      </div>
     </div>
     <div className='header-right'>
       <div className="user">
@@ -42,7 +44,9 @@ function Header() {
               <li>
                 <Link to="/profile">Perfil</Link> 
               </li>
-              <li>Reservas</li>
+              <li>
+              <Link to="/mis-reservas">Reservas</Link> 
+              </li>
               <li>Cerrar Sesión</li>
             </ul>
             
