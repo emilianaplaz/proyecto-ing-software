@@ -20,10 +20,15 @@ function LandingPage() {
             <h1 className="title-landing">Reserva tus salones</h1>
         </div>
         <div className="button-container">
-            <button className="iniciar-sesion-btn">Iniciar Sesión</button>
-            <Link to="/signup" className="registrarse-link">
-              Registrarse
-            </Link>
+            <button className="iniciar-sesion-btn">
+                <Link to="/login">Iniciar Sesión</Link>
+            </button>
+
+            <button className="registrarse-btn">
+                <Link to="/signup">Registrarse</Link>
+            </button>
+
+            
         </div>
         <div className="google-button-container">
             <button className="google-button">

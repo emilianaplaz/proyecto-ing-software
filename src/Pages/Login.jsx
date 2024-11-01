@@ -3,11 +3,13 @@ import { auth } from '../credenciales';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import './Login.css'; 
 import HeaderLanding from '../Components/HeaderLanding';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();  
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -18,7 +20,7 @@ const Login = () => {
       await signInWithEmailAndPassword(auth, email, password);
       console.log('Inicio de sesión exitoso');
       // Aquí puedes redirigir al usuario a otra página
-      // Por ejemplo: navigate('/dashboard');
+      navigate('/reservas');
     } catch (err) {
       setError(err.message);
     }
