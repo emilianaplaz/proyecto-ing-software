@@ -62,17 +62,39 @@
 }
 
 
+
 .google-button {
-  background: none; 
-  border: none; /* Remove default button border */
-  padding: 0; /* Remove padding */
-  cursor: pointer; /* Change cursor to pointer */
+  display: flex; /* Usar Flexbox para alinear el logo y el texto */
+  align-items: center; /* Centrar verticalmente */
+  background-color: #112140; /* Color de fondo */
+  color: white; /* Color del texto */
+  font-size: 1rem; /* Tamaño de fuente */
+  border-radius: 50px; /* Bordes redondeados */
+  border: 1px solid #112140; /* Borde igual que los otros botones */
+  padding: 0 20px; /* Espaciado interno para el botón */
+  height: 3rem; /* Altura igual que los otros botones */
+  font-family: 'Montserrat'; /* Fuente */
+  font-weight: 400; /* Peso de fuente */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones */
+  cursor: pointer; /* Cambiar cursor a puntero */
+  white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
 }
 
 .google-button img {
-  width: 48px; 
+  width: 30px; /* Ajustar el tamaño del logo */
   height: auto; 
-} 
+  margin-right: 8px; /* Espacio entre el logo y el texto */
+}
+
+.google-button:hover {
+  background-color: #ff8201; /* Cambiar color de fondo al pasar el mouse */
+  transform: scale(1.05); /* Efecto de escalado */
+  border: none; /* Eliminar borde al pasar el mouse */
+}
+
+.google-button-text {
+  display: inline-block; /* Asegura que el texto se comporte como un bloque */
+}
 
 .registrarse-link {
   display: inline-block; /* Asegura que el Link se comporte como un bloque */
