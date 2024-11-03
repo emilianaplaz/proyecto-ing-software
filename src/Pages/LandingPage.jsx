@@ -41,29 +41,12 @@ function LandingPage() {
         return;
       }
   
-      // Si el usuario no existe, procede con el registro
-      const name = user.displayName;
-      const ci = prompt("Por favor, ingresa tu cédula:");
-  
-      // Verificar si la cédula ya existe
-      const ciDocRef = doc(db, 'usuarios', ci);
-      const ciDoc = await getDoc(ciDocRef);
-  
-      if (ciDoc.exists()) {
-        setError('Ya existe un usuario con la misma CI.');
+      if (!userDoc.exists()) {
+        setError('El usuario no está registrado. Por favor, regístrate primero.');
+        await auth.currentUser.delete();
         return;
       }
   
-      // Agregar usuario a Firestore usando "ci" como ID del documento
-      await setDoc(doc(db, 'usuarios', ci), {
-        name,
-        email: user.email,
-        rol: user.email.endsWith('@correo.unimet.edu.ve') ? 'estudiante' : 'profesor',
-        createdAt: new Date(),
-      });
-  
-      console.log('Usuario registrado con Google:', name, user.email, ci);
-      navigate('/home'); // Cambia '/home' por la ruta a la que quieras redirigir
     } catch (err) {
       setError(err.message);
     }
@@ -91,7 +74,7 @@ function LandingPage() {
           <div className="google-button-container">
             <button className="google-button" onClick={handleGoogleSignUp}>
               <img src={logoGoogle} alt="Google Logo" className="google-logo" />
-              Continuar con Google
+              Iniciar sesión con Google
             </button>
           </div>
         </div>
@@ -108,18 +91,3 @@ function LandingPage() {
 
 export default LandingPage;
 
-// (
-//             <form className="signup-form" onSubmit={handleGoogleCI}>
-//               <p>Por favor, ingresa tu cédula</p>
-//               <input
-//                 type="text"
-//                 placeholder="CI"
-//                 required
-//                 pattern="\d+"
-//                 title="Solo se permiten números"
-//                 value={ci}
-//                 onChange={(e) => setCi(e.target.value)}
-//               />
-//               <button type="submit">Registrar con Google</button>
-//             </form>
-//           )

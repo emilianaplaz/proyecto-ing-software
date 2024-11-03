@@ -66,11 +66,11 @@
 .google-button {
   display: flex; /* Usar Flexbox para alinear el logo y el texto */
   align-items: center; /* Centrar verticalmente */
-  background-color: #112140; /* Color de fondo */
-  color: white; /* Color del texto */
+  background-color: #ffffff; /* Color de fondo */
+  color: rgb(20, 19, 51); /* Color del texto */
   font-size: 1rem; /* Tamaño de fuente */
   border-radius: 50px; /* Bordes redondeados */
-  border: 1px solid #112140; /* Borde igual que los otros botones */
+  border: 1px solid #f7f7f7; /* Borde igual que los otros botones */
   padding: 0 20px; /* Espaciado interno para el botón */
   height: 3rem; /* Altura igual que los otros botones */
   font-family: 'Montserrat'; /* Fuente */
