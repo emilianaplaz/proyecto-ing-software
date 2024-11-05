@@ -18,12 +18,14 @@ const Login = () => {
     try {
       // Iniciar sesión con Firebase
       await signInWithEmailAndPassword(auth, email, password);
+      localStorage.setItem('userId', auth.currentUser.uid);
       console.log('Inicio de sesión exitoso');
-      // Aquí puedes redirigir al usuario a otra página
+      console.log('El userId guardado es:', auth.currentUser.uid);      // Aquí puedes redirigir al usuario a otra página
       navigate('/reservas');
     } catch (err) {
       setError(err.message);
     }
+    
   };
 
   return (

@@ -38,3 +38,11 @@
   font-size: 16px;
   color: #1f2a44; 
 }
+
+.edit{
+  background-color: #1f2a44;
+    color: white;
+    border-radius: 50px;
+    font-family: 'Montserrat';
+    font-weight: 400;
+}
