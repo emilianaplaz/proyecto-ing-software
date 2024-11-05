@@ -1,0 +1,31 @@
+.auditorios-container {
+    text-align: center;
+    background: none; /* O el color de fondo que desees */
+    padding: 20px;
+    font-family: 'Montserrat';
+    font-weight: 400;
+
+  }
+  
+  .auditorios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Ajusta el número de columnas según tu diseño */
+    gap: 20px;
+  }
+  
+  .auditorio-button {
+    background-color: white; /* Verde */
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer; 
+    border-radius: 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Sombra */
+    width: 250px;
+    height: 80px;
+  }
+  

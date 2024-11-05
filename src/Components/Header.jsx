@@ -13,19 +13,7 @@ function Header() {
     setShowDropdown(!showDropdown);
   };
 
- /* const handleProfileClick   
- = () => {
-    navigate('/perfil'); // Reemplaza '/perfil' con la ruta correcta
-  };
 
-  const handleReservasClick = () => {
-    navigate('/perfil'); // Reemplaza '/reservas' con la ruta correcta
-  };
-
-  const handleCerrarSesionClick = () => {
-    
-    navigate('/perfil');
-  }; */
 
   return (
     <header className="header-home"> 

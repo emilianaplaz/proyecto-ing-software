@@ -8,6 +8,7 @@ import Login from './Pages/Login';
 import ForgotPassword from './Pages/ForgotPassword';
 import Reservas from './Pages/Reservas';
 import Profile from './Pages/Profile';
+import Auditorios from './Pages/Auditorios';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
       {/* <HeaderLanding /> */}
       <Routes>
         {/* Set LandingPage as the default route */}
-        <Route path="/" element={<LandingPage/>} />
+        <Route path="/" element={<Auditorios/>} />
         {/* Define other routes like HomeReservas and SignUp */}
         <Route path="/reservas" element={<HomeReservas />} />
         <Route path="/signup" element={<SignUp />} />
@@ -24,6 +25,7 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/mis-reservas" element={<Reservas />} />
+        <Route path="/auditorios" element={<Auditorios />} />
 
         </Routes>
       </div>

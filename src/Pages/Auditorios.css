@@ -1,0 +1,25 @@
+.container-auditorio{
+    display: flex;
+    align-items: center; 
+    justify-content: center;  
+    flex-direction: column;
+}
+
+
+.auditorio-title {
+      padding: 20px;  
+      font-family: 'Montserrat';
+      font-weight: 400;
+      font-size: 3rem;
+      color: #000;
+  }
+
+.continuar-button{
+    background-color: #1f2a44;
+    color: white;
+    border-radius: 50px;
+    font-family: 'Montserrat';
+    font-weight: 400;
+
+}
+  
