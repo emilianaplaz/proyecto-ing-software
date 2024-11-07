@@ -4,7 +4,7 @@ import './Reservas.css';
 
 function Reservas() {
   return (
-    <div className="container">
+    <div className="container-tus-reservas">
       <Header />
         <div className="title" >Tus reservas</div>
       

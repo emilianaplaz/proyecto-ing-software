@@ -1,10 +1,5 @@
-
-
-
 import Header from '../Components/Header';
 import './Profile.css';
-
-
 
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged, updateProfile } from 'firebase/auth';
@@ -74,7 +69,7 @@ function Perfil() {
   };
 
   return (
-    <div className="container">
+    <div className="container-profile">
       <Header />
       <div className="profile-container">
         <div className="profile-box">

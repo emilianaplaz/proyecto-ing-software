@@ -35,32 +35,11 @@
   justify-content: center; 
 }
 
-.iniciar-sesion-btn,
-.registrarse-btn{
-  background-color: #112140;
-  color: white;
-  font-size: 1.0rem;
-  border-radius: 50px;
-  width: 30%;
-  height: 3rem;
-  font-family: 'Montserrat';
-  font-weight: 400;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.iniciar-sesion-btn:hover,
-.registrarse-btn:hover{
-    background-color: #ff8201; 
-    transform: scale(1.05);
-    border:none;
-
-}
 
 .google-button-container{
   justify-content: center;
   margin-top: 30px;
 }
-
 
 
 .google-button {
@@ -96,8 +75,12 @@
   display: inline-block; /* Asegura que el texto se comporte como un bloque */
 }
 
+<<<<<<< HEAD
 .registrarse-link,
 .login-link {
+=======
+.registrarse-link,.iniciar-sesion-btn  {
+>>>>>>> a416fe252e6e1b9edbd941bcd24698a3faa0e184
   display: inline-block; /* Asegura que el Link se comporte como un bloque */
   background-color: #112140; /* Mismo color de fondo que los botones */
   color: white; /* Color del texto */
@@ -113,8 +96,12 @@
   text-decoration: none; /* Eliminar subrayado */
 }
 
+<<<<<<< HEAD
 .registrarse-link:hover,
 .login-link:hover {
+=======
+.registrarse-link:hover,.iniciar-sesion-btn:hover {
+>>>>>>> a416fe252e6e1b9edbd941bcd24698a3faa0e184
   background-color: #ff8201; /* Cambiar color de fondo al pasar el mouse */
   transform: scale(1.05); /* Efecto de escalado */
   color: aliceblue;
