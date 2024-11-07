@@ -20,7 +20,7 @@ function Header() {
     <div className='header-left'>
     <img src={logoUnimet} alt="logo" style={{ width: '50px', height: 'auto' }}/>  
       <div className = 'title-header-home' >
-      <a href="/reservas">Reservas Unimet</a>
+      <a href="/home" className='link-header-blanco'>Reservas Unimet</a>
       </div>
     </div>
     <div className='header-right'>
@@ -30,10 +30,10 @@ function Header() {
           <div className="dropdown">
             <ul>
               <li>
-                <Link to="/profile">Perfil</Link> 
+                <Link to="/profile" className='link-header-negro'>Perfil</Link> 
               </li>
               <li>
-              <Link to="/mis-reservas">Reservas</Link> 
+              <Link to="/mis-reservas" className='link-header-negro'>Reservas</Link> 
               </li>
               <li>Cerrar Sesión</li>
             </ul>

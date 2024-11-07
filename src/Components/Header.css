@@ -67,4 +67,23 @@
   .user:hover .dropdown {
     display: block;
   }
-  
+
+  .link-header-negro {
+    color: black;
+    text-decoration: none;
+
+  }
+
+  .link-header-blanco {
+    color: white;
+    text-decoration: none;
+
+  }
+
+  .link-header-blanco:hover {
+    color: white;
+  }
+
+  .link-header-negro:hover {
+    color: orange;
+  }

@@ -1,11 +1,17 @@
 /* Estilos del contenedor principal */
 .calendar-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-  }
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-image: url("../assets/Images/Pupitres.jpg");
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
   
   /* Estilos del título */
   .calendar-container h1 {

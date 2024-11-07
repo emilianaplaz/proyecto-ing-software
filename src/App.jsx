@@ -9,6 +9,7 @@ import ForgotPassword from './Pages/ForgotPassword';
 import Reservas from './Pages/Reservas';
 import Profile from './Pages/Profile';
 import Auditorios from './Pages/Auditorios';
+import Aulas from './Pages/Aulas'
 import Calendario from './Pages/Calendar';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/auditorios" element={<Auditorios />} />
         <Route path="/reservas" element={<Reservas />} />
         <Route path="/calendario/:auditorioId" element={<Calendario />} />
+        <Route path="/aulas" element={<Aulas />} />
         </Routes>
       </div>
     </Router>
