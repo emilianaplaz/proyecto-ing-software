@@ -12,6 +12,8 @@ function Calendario() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [availableSlots, setAvailableSlots] = useState([]);
   const [isDateSelected, setIsDateSelected] = useState(false);
+  const [showAvailableSlots, setShowAvailableSlots] = useState(false);
+
 
   useEffect(() => {
     if (isDateSelected) {
@@ -55,6 +57,7 @@ function Calendario() {
   const handleDateChange = (date) => {
     setSelectedDate(date);
     setIsDateSelected(true);
+    setShowAvailableSlots(false);
   };
 
   return (
@@ -62,14 +65,19 @@ function Calendario() {
       <Header />
       <h1>Selecciona tu fecha</h1>
       <Calendar onChange={handleDateChange} value={selectedDate} />
-      {availableSlots.length > 0 && (
+      {isDateSelected && (
         <div>
-          <h2>Horarios Disponibles</h2>
-          {availableSlots.map(slot => (
-            <div key={slot.id} className="available-slot">
-              {slot.horario}
+          <button className="continuar-button" onClick={() => setShowAvailableSlots(true)}>Continuar</button>
+          {showAvailableSlots && (
+            <div>
+              <h2>Horarios Disponibles</h2>
+              {availableSlots.map(slot => (
+                <div key={slot.id} className="available-slot">
+                  {slot.horario}
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
       )}
     </div>

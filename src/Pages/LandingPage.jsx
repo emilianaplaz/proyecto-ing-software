@@ -65,7 +65,9 @@ function LandingPage() {
             <h1 className="title-landing">Reserva tus salones</h1>
           </div>
           <div className="button-container">
-            <button className="iniciar-sesion-btn">Iniciar Sesión</button>
+            <Link to="/login" className="login-link">
+              Iniciar Sesión
+            </Link>
             <Link to="/signup" className="registrarse-link">
               Registrarse
             </Link>

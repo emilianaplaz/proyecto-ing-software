@@ -1,4 +1,4 @@
-/* Estilos del contenedor principal */
+ /* Estilos del contenedor principal */
 .calendar-container {
     display: flex;
     flex-direction: column;
@@ -31,6 +31,8 @@
     border: none;
     background-color: white;
     border-radius: 35px;
+    color: #000;
+    font-family: 'Montserrat'
   }
   
   .react-calendar__navigation {
@@ -46,27 +48,33 @@
     cursor: pointer;
   }
   
-  .react-calendar__tile {
-    padding: 15px;
-    text-align: center;
-    font-size: 16px;
-    color: #000000;
-    border-radius: 50%;
-    cursor: pointer;
+.react-calendar__tile {
+  padding: 15px;
+  text-align: center;
+  font-size: 16px;
+  color: #1f2a44;
+  border-radius: 6px;
+  cursor: pointer;
   }
+
+  abbr[title] {
+    text-decoration: none;
+   }
   
   .react-calendar__tile--active {
-    background-color: #ff9900;
+    background-color: #1f2a44;
     color: white;
+    
   }
   
   .react-calendar__tile:hover {
     background-color: #1f2a44;
   }
 
-  .react-calendar__tile--weekend {
-    color: #ff9900;
-  }
+
+.react-calendar__month-view__days__day--weekend {
+  color: #ff9900 !important;
+}
   
   /* Estilos de los horarios disponibles */
   .available-slots {
@@ -96,4 +104,13 @@
   .available-slot:hover {
     background-color: #ff9900;
   }
+  
+  .continuar-button{
+    background-color: #1f2a44;
+    color: white;
+    border-radius: 50px;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    margin-top: 40px;
+}
   
