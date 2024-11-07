@@ -59,27 +59,22 @@ function LandingPage() {
         <HeaderLanding /> 
       </div> 
 
-    
-      
-<div className="container-landing">
-    <div className="container-left">
-        <div className="title-landing">
+      <div className="container">
+        <div className="container-left">
+          <div className="title-landing">
             <h1 className="title-landing">Reserva tus salones</h1>
-        </div>
-        <div className="button-container">
-            <button className="iniciar-sesion-btn">
-                <Link to="/login">Iniciar Sesión</Link>
-            </button>
-
-            <button className="registrarse-btn">
-                <Link to="/signup">Registrarse</Link>
-            </button>
-
-            
-        </div>
-        <div className="google-button-container">
-            <button className="google-button">
-                <img src={logoGoogle} alt="Google Logo" className="google-logo" />
+          </div>
+          <div className="button-container">
+            <button className="iniciar-sesion-btn">Iniciar Sesión</button>
+            <Link to="/signup" className="registrarse-link">
+              Registrarse
+            </Link>
+          </div>
+          {error && <p className="error">{error}</p>}
+          <div className="google-button-container">
+            <button className="google-button" onClick={handleGoogleSignUp}>
+              <img src={logoGoogle} alt="Google Logo" className="google-logo" />
+              Iniciar sesión con Google
             </button>
           </div>
         </div>
@@ -95,4 +90,3 @@ function LandingPage() {
 }
 
 export default LandingPage;
-

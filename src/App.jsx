@@ -9,6 +9,7 @@ import ForgotPassword from './Pages/ForgotPassword';
 import Reservas from './Pages/Reservas';
 import Profile from './Pages/Profile';
 import Auditorios from './Pages/Auditorios';
+import Calendario from './Pages/Calendar';
 
 function App() {
   return (
@@ -19,14 +20,15 @@ function App() {
         {/* Set LandingPage as the default route */}
         <Route path="/" element={<LandingPage/>} />
         {/* Define other routes like HomeReservas and SignUp */}
-        <Route path="/reservas" element={<HomeReservas />} />
+        <Route path="/home" element={<HomeReservas />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/mis-reservas" element={<Reservas />} />
         <Route path="/auditorios" element={<Auditorios />} />
-
+        <Route path="/reservas" element={<Reservas />} />
+        <Route path="/calendario/:auditorioId" element={<Calendario />} />
         </Routes>
       </div>
     </Router>

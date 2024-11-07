@@ -1,19 +1,38 @@
 import React, { useState } from 'react';
 import Header from '../Components/Header';
-import Auditorios from '../Components/AuditoriosComponent';
+import AuditoriosComponent from '../Components/AuditoriosComponent';
 import './Auditorios.css';
+import { useNavigate } from 'react-router-dom';
 
-function Reservas() {
+
+function Auditorios() {
+  const [selectedAuditorio, setSelectedAuditorio] = useState(null);
+  const navigate = useNavigate();
+
+  const handleAuditorioClick = (auditorio) => {
+    setSelectedAuditorio(auditorio);
+  };
+
+  const handleContinue = () => {
+    if (selectedAuditorio) {
+      navigate(`/calendario/${selectedAuditorio.id}`);
+    }
+  };
+
   return (
     <div className="container-auditorio">
       <Header />
-        <div className="auditorio-title" >Selecciona tu auditorio</div>
-         <Auditorios /> 
-        <button className="continuar-button">Continuar</button>
-        
-      </div>
-  
+      <div className="auditorio-title">Selecciona tu auditorio</div>
+      <AuditoriosComponent onAuditorioClick={handleAuditorioClick} />
+      <button
+        className="continuar-button"
+        onClick={handleContinue}
+        disabled={!selectedAuditorio}
+      >
+        Continuar
+      </button>
+    </div>
   );
 }
 
-export default Reservas;
+export default Auditorios;

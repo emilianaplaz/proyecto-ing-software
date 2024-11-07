@@ -3,7 +3,7 @@ import { auth, db } from '../credenciales';
 import { collection, getDocs } from 'firebase/firestore'; // Importamos getDocs para obtener todos los documentos de una colección
 import './AuditoriosComponent.css'
 
-function Auditorios() {
+function AuditoriosComponent({ onAuditorioClick }) {
   const [auditorios, setAuditorios] = useState([]);
 
   useEffect(() => {
@@ -23,7 +23,11 @@ function Auditorios() {
     <div className="auditorios-container">
       <div className="auditorios-grid">
         {auditorios.map(auditorio => (
-          <button key={auditorio.id} className="auditorio-button">
+          <button
+            key={auditorio.id}
+            className="auditorio-button"
+            onClick={() => onAuditorioClick(auditorio)}
+          >
             {auditorio.nombre}
           </button>
         ))}
@@ -32,4 +36,4 @@ function Auditorios() {
   );
 }
 
-export default Auditorios;
+export default AuditoriosComponent;
