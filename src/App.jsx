@@ -11,6 +11,7 @@ import Profile from './Pages/Profile';
 import Auditorios from './Pages/Auditorios';
 import Aulas from './Pages/Aulas'
 import Calendario from './Pages/Calendar';
+import ConfirmarReservaAuditorio from './Pages/ConfirmarReservaAuditorio';
 
 function App() {
   return (
@@ -28,9 +29,11 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/mis-reservas" element={<Reservas />} />
         <Route path="/auditorios" element={<Auditorios />} />
-        <Route path="/reservas" element={<Reservas />} />
+        <Route path="/reservas" element={<HomeReservas />} />
         <Route path="/calendario/:auditorioId" element={<Calendario />} />
         <Route path="/aulas" element={<Aulas />} />
+        <Route path="/confirmar-reserva-auditorio" element={<ConfirmarReservaAuditorio />} />
+
         </Routes>
       </div>
     </Router>

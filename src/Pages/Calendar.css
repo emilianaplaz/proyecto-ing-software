@@ -110,11 +110,20 @@ color: #ff9900 !important;
   background-color: #ff9900;
 }
 
-.continuar-button {
+.continuar-button,
+.back-button {
   background-color: #1f2a44;
   color: white;
   border-radius: 50px;
   font-family: 'Montserrat';
   font-weight: 400;
-  margin-top: 40px; /* Agrega este margen superior */
+  margin-top: 40px;
 }
+
+.horas-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+

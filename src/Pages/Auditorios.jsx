@@ -5,6 +5,7 @@ import './Auditorios.css';
 import { useNavigate } from 'react-router-dom';
 
 
+
 function Auditorios() {
   const [selectedAuditorio, setSelectedAuditorio] = useState(null);
   const navigate = useNavigate();
@@ -15,6 +16,8 @@ function Auditorios() {
 
   const handleContinue = () => {
     if (selectedAuditorio) {
+      localStorage.setItem("auditorio-seleccionado", selectedAuditorio.id);
+      console.log(selectedAuditorio) // Save to localStorage
       navigate(`/calendario/${selectedAuditorio.id}`);
     }
   };
