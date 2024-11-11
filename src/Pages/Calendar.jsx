@@ -82,11 +82,24 @@ function Calendario() {
 
   const handleFinalContinue = () => {
     if (selectedDate && selectedSlot) {
-      localStorage.setItem("fecha-seleccionada", selectedDate.toDateString());
+      const fechaEnEspanol = selectedDate.toLocaleDateString("es-ES", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+  
+      localStorage.setItem("fecha-seleccionada", fechaEnEspanol);
       localStorage.setItem("hora-seleccionada", selectedSlot.horario);
-      console.log("Date and Time Saved:", selectedDate.toDateString(), selectedSlot.horario);
+      console.log("Fecha y hora guardadas:", fechaEnEspanol, selectedSlot.horario);
       navigate("/confirmar-reserva-auditorio");
     }
+  };
+
+  // Disable weekends in the calendar
+  const disableWeekends = ({ date }) => {
+    const day = date.getDay();
+    return day === 0 || day === 6; // Disable Sundays (0) and Saturdays (6)
   };
 
   return (
@@ -95,7 +108,12 @@ function Calendario() {
       {isCalendarView ? (
         <div className="horas-container">
           <h1>Selecciona tu fecha</h1>
-          <Calendar onChange={handleDateChange} value={selectedDate} />
+          <Calendar 
+            onChange={handleDateChange} 
+            value={selectedDate} 
+            tileDisabled={disableWeekends}
+            locale="es-ES" // Set the calendar language to Spanish
+          />
           {isDateSelected && (
             <button className="continuar-button" onClick={handleContinueToSlots}>Continuar</button>
           )}

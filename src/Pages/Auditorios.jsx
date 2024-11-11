@@ -16,7 +16,7 @@ function Auditorios() {
 
   const handleContinue = () => {
     if (selectedAuditorio) {
-      localStorage.setItem("auditorio-seleccionado", selectedAuditorio.id);
+      localStorage.setItem("auditorio-seleccionado", selectedAuditorio.nombre);
       console.log(selectedAuditorio) // Save to localStorage
       navigate(`/calendario/${selectedAuditorio.id}`);
     }
