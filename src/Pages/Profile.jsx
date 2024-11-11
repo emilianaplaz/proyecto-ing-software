@@ -3,7 +3,7 @@ import './Profile.css';
 
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged, updateProfile } from 'firebase/auth';
-import { getFirestore, doc, getDoc, updateDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDocs, updateDoc, collection, query, where } from 'firebase/firestore';
 
 function Perfil() {
   const [name, setName] = useState('');
@@ -17,30 +17,34 @@ function Perfil() {
   const db = getFirestore();
 
   useEffect(() => {
-    const userId = localStorage.getItem('userId');
+    const userEmail = localStorage.getItem('userId'); // Get the email from localStorage
 
-    onAuthStateChanged(auth, async (user) => {
-      if (userId && user && userId.toLowerCase() === user.uid.toLowerCase()) {
-        const userDocRef = doc(db, 'usuarios', user.uid);
+    if (userEmail) {
+      const fetchUserData = async () => {
         try {
-          const docSnapshot = await getDoc(userDocRef);
-          if (docSnapshot.exists()) {
-            const userData = docSnapshot.data();
+          const usersCollection = collection(db, 'usuarios');
+          const userQuery = query(usersCollection, where('email', '==', userEmail));
+          const querySnapshot = await getDocs(userQuery);
+
+          if (!querySnapshot.empty) {
+            const userData = querySnapshot.docs[0].data();
             setName(userData.name || '');
-            setCi(userData.ci || '');
+            setCi(querySnapshot.id);
             setEmail(userData.email || '');
           } else {
-            console.error('Documento del usuario no encontrado:', user.uid);
+            console.error('Documento del usuario no encontrado con el email:', userEmail);
             setError('No se encontraron datos del usuario.');
           }
         } catch (error) {
           console.error('Error al obtener datos del usuario:', error);
           setError('Error al cargar el perfil');
         }
-      } else {
-        setError('Sesión expirada. Inicia sesión nuevamente.');
-      }    
-    });
+      };
+
+      fetchUserData();
+    } else {
+      setError('Sesión expirada. Inicia sesión nuevamente.');
+    }
   }, []);
 
   const handleEditClick = async () => {
@@ -49,7 +53,7 @@ function Perfil() {
 
     try {
       const updates = {
-        displayName: name, // Actualiza el nombre en el perfil de autenticación
+        displayName: name, // Update name in authentication profile
       };
 
       if (!editMode) {
