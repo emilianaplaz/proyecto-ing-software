@@ -8,50 +8,88 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [generalError, setGeneralError] = useState('');
   const navigate = useNavigate();  
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError('');
+    setGeneralError('');
+    
+    // Validar el correo electrónico
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@(correo\.unimet\.edu\.ve|unimet\.edu\.ve)$/;
+    if (!emailPattern.test(email)) {
+      setEmailError('Debe ingresar un correo Unimet');
+      return;
+    } else {
+      setEmailError('');
+    }
+
+    // Validar la contraseña
+    if (password.length < 6) {
+      setPasswordError('La contraseña debe tener al menos 6 caracteres');
+      return;
+    } else {
+      setPasswordError('');
+    }
 
     try {
       // Iniciar sesión con Firebase
       await signInWithEmailAndPassword(auth, email, password);
       localStorage.setItem('userId', auth.currentUser.email);
       console.log('Inicio de sesión exitoso');
-      console.log('El user guardado es:', auth.currentUser.email);      // Aquí puedes redirigir al usuario a otra página
       navigate('/reservas');
     } catch (err) {
-      setError(err.message);
+      setGeneralError(err.message);
     }
-    
   };
 
   return (
     <div>
       <div>
-          <HeaderLanding/> 
+        <HeaderLanding/> 
       </div>
       
       <div className="login-container">
         <div className="login-box">
           <h3>Iniciar sesión</h3>
-          {error && <p className="error">{error}</p>}
+          {generalError && <p className="error">{generalError}</p>}
           <form className="login-form" onSubmit={handleLogin}>
+            {emailError && <p className="error">{emailError}</p>}
             <input
               type="email"
               placeholder="Correo Unimet"
               required
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value;
+                setEmail(value);
+                // Validar correo en tiempo real
+                const emailPattern = /^[a-zA-Z0-9._%+-]+@(correo\.unimet\.edu\.ve|unimet\.edu\.ve)$/;
+                if (!emailPattern.test(value)) {
+                  setEmailError('Debe ingresar un correo Unimet');
+                } else {
+                  setEmailError('');
+                }
+              }}
             />
+            {passwordError && <p className="error">{passwordError}</p>}
             <input
               type="password"
               placeholder="Contraseña"
               required
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value;
+                setPassword(value);
+                // Validar contraseña en tiempo real
+                if (value.length < 6) {
+                  setPasswordError('La contraseña debe tener al menos 6 caracteres');
+                } else {
+                  setPasswordError('');
+                }
+              }}
             />
             <button type="submit">Iniciar sesión</button>
           </form>

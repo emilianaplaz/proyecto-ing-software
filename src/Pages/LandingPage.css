@@ -75,12 +75,8 @@
   display: inline-block; /* Asegura que el texto se comporte como un bloque */
 }
 
-<<<<<<< HEAD
 .registrarse-link,
 .login-link {
-=======
-.registrarse-link,.iniciar-sesion-btn  {
->>>>>>> a416fe252e6e1b9edbd941bcd24698a3faa0e184
   display: inline-block; /* Asegura que el Link se comporte como un bloque */
   background-color: #112140; /* Mismo color de fondo que los botones */
   color: white; /* Color del texto */
@@ -96,12 +92,8 @@
   text-decoration: none; /* Eliminar subrayado */
 }
 
-<<<<<<< HEAD
 .registrarse-link:hover,
 .login-link:hover {
-=======
-.registrarse-link:hover,.iniciar-sesion-btn:hover {
->>>>>>> a416fe252e6e1b9edbd941bcd24698a3faa0e184
   background-color: #ff8201; /* Cambiar color de fondo al pasar el mouse */
   transform: scale(1.05); /* Efecto de escalado */
   color: aliceblue;

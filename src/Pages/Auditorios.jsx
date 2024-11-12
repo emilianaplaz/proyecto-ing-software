@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import Header from '../Components/Header';
 import AuditoriosComponent from '../Components/AuditoriosComponent';
-import './Auditorios.css';
 import { useNavigate } from 'react-router-dom';
-
+import './Auditorios.css';
 
 
 function Auditorios() {

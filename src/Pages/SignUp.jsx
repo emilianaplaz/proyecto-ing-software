@@ -11,21 +11,41 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [ciError, setCiError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     setError('');
-    
+
     // Validar el correo electrónico
     const emailPattern = /^[a-zA-Z0-9._%+-]+@(correo\.unimet\.edu\.ve|unimet\.edu\.ve)$/;
     if (!emailPattern.test(email)) {
-      setError('Debe ingresar un correo Unimet');
+      setEmailError('Debe ingresar un correo Unimet');
       return;
+    } else {
+      setEmailError('');
+    }
+
+    // Validar la cédula
+    if (!/^\d+$/.test(ci)) {
+      setCiError('Solo se permiten números');
+      return;
+    } else {
+      setCiError('');
+    }
+
+    // Validar la contraseña
+    if (password.length < 6) {
+      setPasswordError('La contraseña debe tener al menos 6 caracteres');
+      return;
+    } else {
+      setPasswordError('');
     }
 
     // Determinar el rol basado en el correo
     const rol = email.endsWith('@correo.unimet.edu.ve') ? 'estudiante' : 'profesor';
-    
 
     try {
       // Verificar si la cédula ya existe
@@ -57,8 +77,8 @@ const SignUp = () => {
   return (
     <div>
       <div>
-          <HeaderLanding/> 
-        </div>
+        <HeaderLanding />
+      </div>
 
       <div className="signup-container">
         <div className="signup-box">
@@ -72,28 +92,57 @@ const SignUp = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
+            {ciError && <p className="error">{ciError}</p>}
             <input
               type="text"
               placeholder="CI"
               required
-              pattern="\d+"
-              title="Solo se permiten números"
               value={ci}
-              onChange={(e) => setCi(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value;
+                setCi(value);
+                // Validar solo números
+                if (!/^\d*$/.test(value)) {
+                  setCiError('Solo se permiten números');
+                } else {
+                  setCiError('');
+                }
+              }}
             />
+            {emailError && <p className="error">{emailError}</p>}
             <input
               type="email"
               placeholder="Correo Unimet"
               required
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value;
+                setEmail(value);
+                // Validar correo en tiempo real
+                const emailPattern = /^[a-zA-Z0-9._%+-]+@(correo\.unimet\.edu\.ve|unimet\.edu\.ve)$/;
+                if (!emailPattern.test(value)) {
+                  setEmailError('Debe ingresar un correo Unimet');
+                } else {
+                  setEmailError('');
+                }
+              }}
             />
+            {passwordError && <p className="error">{passwordError}</p>}
             <input
               type="password"
               placeholder="Contraseña"
               required
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value;
+                setPassword(value);
+                // Validar contraseña en tiempo real
+                if (value.length < 6) {
+                  setPasswordError('La contraseña debe tener al menos 6 caracteres');
+                } else {
+                  setPasswordError('');
+                }
+              }}
             />
             <button type="submit">Registrarse</button>
           </form>
@@ -104,4 +153,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-

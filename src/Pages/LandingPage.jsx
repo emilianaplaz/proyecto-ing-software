@@ -66,7 +66,7 @@ function LandingPage() {
           </div>
           <div className="button-container">
 
-            <Link to="/login" className="iniciar-sesion-btn">
+            <Link to="/login" className="login-link">
               Iniciar Sesión
             </Link>
 
