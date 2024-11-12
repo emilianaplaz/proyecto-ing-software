@@ -127,3 +127,21 @@ color: #ff9900 !important;
   align-items: center;
 }
 
+.available-slot {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.available-slot.selected {
+  background-color: orange;
+  color: white;
+}
+
+.gray-slot {
+  background-color: #d3d3d3; /* Light gray for unavailable slots */
+  color: #888; /* Darker gray text */
+  pointer-events: none; /* Prevent clicking */
+  opacity: 0.6; /* Make it appear slightly transparent */
+}

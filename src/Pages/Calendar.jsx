@@ -22,8 +22,11 @@ function Calendario() {
     if (isDateSelected) {
       const getAvailableSlots = async () => {
         const reservasSnapshot = await getDocs(
-          query(collection(db, 'reservas'), where('salonId', '==', auditorioId))
+          query(collection(db, 'reservas-auditorios'), where('salonId', '==', auditorioId))
+          
         );
+
+        
 
         const reservasFecha = reservasSnapshot.docs.filter(doc =>
           doc.data().entrada.toDate().toDateString() === selectedDate.toDateString()
@@ -39,17 +42,21 @@ function Calendario() {
           slotEnd.setHours(slotEnd.getHours() + 1);
           slotEnd.setMinutes(slotEnd.getMinutes() + 30);
 
-          const isAvailable = !reservasFecha.some(doc =>
-            (currentTime >= doc.data().entrada.toDate() && currentTime < doc.data().salida.toDate()) ||
-            (slotEnd > doc.data().entrada.toDate() && slotEnd <= doc.data().salida.toDate())
-          );
+          const isAvailable = !reservasFecha.some(doc => {
+            const entrada = doc.data().entrada.toDate();
+            const salida = doc.data().salida.toDate();
+            return (
+              (currentTime >= entrada && currentTime < salida) ||
+              (slotEnd > entrada && slotEnd <= salida) ||
+              (currentTime <= entrada && slotEnd >= salida)
+            );
+          });
 
-          if (isAvailable) {
-            slots.push({
-              id: `${currentTime.getHours()}:${currentTime.getMinutes().toString().padStart(2, '0')}-${slotEnd.getHours()}:${slotEnd.getMinutes().toString().padStart(2, '0')}`,
-              horario: `${currentTime.getHours()}:${currentTime.getMinutes().toString().padStart(2, '0')} - ${slotEnd.getHours()}:${slotEnd.getMinutes().toString().padStart(2, '0')}`
-            });
-          }
+          slots.push({
+            id: `${currentTime.getHours()}:${currentTime.getMinutes().toString().padStart(2, '0')}-${slotEnd.getHours()}:${slotEnd.getMinutes().toString().padStart(2, '0')}`,
+            horario: `${currentTime.getHours()}:${currentTime.getMinutes().toString().padStart(2, '0')} - ${slotEnd.getHours()}:${slotEnd.getMinutes().toString().padStart(2, '0')}`,
+            isAvailable
+          });
 
           currentTime.setMinutes(currentTime.getMinutes() + 105);
         }
@@ -77,7 +84,9 @@ function Calendario() {
   };
 
   const handleSlotSelection = (slot) => {
-    setSelectedSlot(slot);
+    if (slot.isAvailable) {
+      setSelectedSlot(slot);
+    }
   };
 
   const handleFinalContinue = () => {
@@ -88,7 +97,7 @@ function Calendario() {
         month: "long",
         day: "numeric",
       });
-  
+
       localStorage.setItem("fecha-seleccionada", fechaEnEspanol);
       localStorage.setItem("hora-seleccionada", selectedSlot.horario);
       console.log("Fecha y hora guardadas:", fechaEnEspanol, selectedSlot.horario);
@@ -99,7 +108,7 @@ function Calendario() {
   // Disable weekends in the calendar
   const disableWeekends = ({ date }) => {
     const day = date.getDay();
-    return day === 0 || day === 6; // Disable Sundays (0) and Saturdays (6)
+    return day === 0 || day === 6;
   };
 
   return (
@@ -112,7 +121,7 @@ function Calendario() {
             onChange={handleDateChange} 
             value={selectedDate} 
             tileDisabled={disableWeekends}
-            locale="es-ES" // Set the calendar language to Spanish
+            locale="es-ES"
           />
           {isDateSelected && (
             <button className="continuar-button" onClick={handleContinueToSlots}>Continuar</button>
@@ -124,7 +133,7 @@ function Calendario() {
           {availableSlots.map(slot => (
             <div
               key={slot.id}
-              className={`available-slot ${selectedSlot === slot ? 'selected' : ''}`}
+              className={`available-slot ${slot.isAvailable ? '' : 'gray-slot'} ${selectedSlot === slot ? 'selected' : ''}`}
               onClick={() => handleSlotSelection(slot)}
             >
               {slot.horario}

@@ -12,6 +12,7 @@ import Auditorios from './Pages/Auditorios';
 import Aulas from './Pages/Aulas'
 import Calendario from './Pages/Calendar';
 import ConfirmarReservaAuditorio from './Pages/ConfirmarReservaAuditorio';
+import ReservaExitosa from './Pages/ReservaExitosa';
 
 function App() {
   return (
@@ -33,6 +34,8 @@ function App() {
         <Route path="/calendario/:auditorioId" element={<Calendario />} />
         <Route path="/aulas" element={<Aulas />} />
         <Route path="/confirmar-reserva-auditorio" element={<ConfirmarReservaAuditorio />} />
+        <Route path="/reserva-exitosa" element={<ReservaExitosa />} />
+
 
         </Routes>
       </div>
