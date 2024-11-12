@@ -13,6 +13,7 @@ import Aulas from './Pages/Aulas'
 import Calendario from './Pages/Calendar';
 import ConfirmarReservaAuditorio from './Pages/ConfirmarReservaAuditorio';
 import ReservaExitosa from './Pages/ReservaExitosa';
+import ReservaEnEspera from './Pages/ReservaEnEspera';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/aulas" element={<Aulas />} />
         <Route path="/confirmar-reserva-auditorio" element={<ConfirmarReservaAuditorio />} />
         <Route path="/reserva-exitosa" element={<ReservaExitosa />} />
+        <Route path="/reserva-en-espera" element={<ReservaEnEspera />} />
 
 
         </Routes>

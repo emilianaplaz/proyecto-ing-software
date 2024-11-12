@@ -1,4 +1,4 @@
-.container-reserva-exitosa {
+.container-reserva-espera {
     text-align: center;
     background-size: cover;
     background-position: center;
@@ -12,7 +12,7 @@
 
   }
 
-  .info-reserva-exitosa {    
+  .info-reserva-espera {    
     display: flex; 
     flex-direction: column;
     align-items: center; 
@@ -22,7 +22,7 @@
   }
 
 
-  .title-reserva-exitosa {
+  .title-reserva-espera {
     padding: 20px;
     display: flex; 
     flex-direction: column;
@@ -34,7 +34,7 @@
     color: #000;
   }
 
-  .regresar-menu {
+  .regresar-menu-espera {
     background-color: #112140;
     width: 230px;
     height: 80px;
