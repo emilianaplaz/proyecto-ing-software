@@ -27,9 +27,12 @@ function Perfil() {
           const querySnapshot = await getDocs(userQuery);
 
           if (!querySnapshot.empty) {
+            const userDoc = querySnapshot.docs[0];
             const userData = querySnapshot.docs[0].data();
+
+            // console.log(userDoc.id);
             setName(userData.name || '');
-            setCi(querySnapshot.id);
+            setCi(userDoc.id || '');
             setEmail(userData.email || '');
           } else {
             console.error('Documento del usuario no encontrado con el email:', userEmail);
@@ -50,22 +53,23 @@ function Perfil() {
   const handleEditClick = async () => {
     setError('');
     setIsLoading(true);
-
+  
     try {
-      const updates = {
-        displayName: name, // Update name in authentication profile
-      };
-
       if (!editMode) {
+        // Activar modo edición y establecer el nombre en el perfil de autenticación
+        const updates = {
+          displayName: name,
+        };
         await updateProfile(auth.currentUser, updates);
       } else {
-        const userDocRef = doc(db, 'usuarios', auth.currentUser.uid);
+        // Actualizar el nombre en Firestore usando el ID de cédula (ci)
+        const userDocRef = doc(db, 'usuarios', ci); // Usar `ci` como ID del documento
         await updateDoc(userDocRef, { name });
       }
-
+  
       setEditMode(!editMode);
     } catch (error) {
-      console.error('Error updating profile:', error);
+      console.error('Error al actualizar el perfil:', error);
       setError('Error al actualizar el perfil');
     } finally {
       setIsLoading(false);

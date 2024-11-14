@@ -41,7 +41,7 @@ const ConfirmarReservaAuditorio = () => {
         // You can add additional fields, such as user ID or timestamp, if needed
       });
 
-      alert("Reserva confirmada exitosamente.");
+      // alert("Reserva confirmada exitosamente.");
 
       navigate("/reserva-exitosa");
     } catch (error) {

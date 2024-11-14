@@ -14,6 +14,7 @@ import Calendario from './Pages/Calendar';
 import ConfirmarReservaAuditorio from './Pages/ConfirmarReservaAuditorio';
 import ReservaExitosa from './Pages/ReservaExitosa';
 import ReservaEnEspera from './Pages/ReservaEnEspera';
+import CalendarAulas from './Pages/CalendarAulas';
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
         <Route path="/confirmar-reserva-auditorio" element={<ConfirmarReservaAuditorio />} />
         <Route path="/reserva-exitosa" element={<ReservaExitosa />} />
         <Route path="/reserva-en-espera" element={<ReservaEnEspera />} />
+        <Route path="/calendario-aulas" element={<CalendarAulas />} />
+
 
 
         </Routes>

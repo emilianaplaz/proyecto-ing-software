@@ -12,7 +12,7 @@ function HomeReservas() {
   };
 
     const handleAulaClick = () => {
-      navigate('/aulas');
+      navigate('/calendario-aulas');
   };
 
   return (
