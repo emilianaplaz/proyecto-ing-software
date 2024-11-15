@@ -4,6 +4,9 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import './Login.css'; 
 import HeaderLanding from '../Components/HeaderLanding';
 import { useNavigate } from 'react-router-dom';
+import { getFirestore, doc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
+
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -12,6 +15,26 @@ const Login = () => {
   const [passwordError, setPasswordError] = useState('');
   const [generalError, setGeneralError] = useState('');
   const navigate = useNavigate();  
+
+  const getUserRole = async (email) => {
+    const db = getFirestore(); // Obtén la instancia de Firestore
+    const usersRef = collection(db, 'usuarios'); // Referencia a la colección de usuarios
+    const q = query(usersRef, where('email', '==', email)); // Consulta para buscar por correo
+
+    try {
+      const querySnapshot = await getDocs(q); // Obtén los documentos que coinciden con la consulta
+
+      if (!querySnapshot.empty) {
+        const userData = querySnapshot.docs[0].data(); // Obtén los datos del primer documento
+        return userData.rol; // Retorna el rol del usuario
+      } else {
+        throw new Error('Usuario no encontrado'); // Manejo de error si el usuario no existe
+      }
+    } catch (error) {
+      throw new Error('Error al obtener el rol del usuario: ' + error.message);
+    }
+  };
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -37,12 +60,16 @@ const Login = () => {
     try {
       // Iniciar sesión con Firebase
       await signInWithEmailAndPassword(auth, email, password);
+      const userRole = await getUserRole(email); // Llama a la función para obtener el rol
       localStorage.setItem('userId', auth.currentUser.email);
+      localStorage.setItem('userRole', userRole); // Guardar el rol en localStorage
       console.log('Inicio de sesión exitoso');
+      console.log(userRole); // Añade esto para verificar el rol
       navigate('/reservas');
     } catch (err) {
       setGeneralError(err.message);
     }
+
   };
 
   return (
