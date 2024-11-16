@@ -43,6 +43,9 @@ function Header() {
                     <Link to="/solicitudes" className='link-header-negro'>Ver Solicitudes</Link>
                   </li>
                 )}
+                <li>
+                  <Link to="/preguntas-frecuentes" className='link-header-negro'>Preguntas</Link> 
+                </li>
                 <li>Cerrar Sesión</li>
               </ul>
             </div>

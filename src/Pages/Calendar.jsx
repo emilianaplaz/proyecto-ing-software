@@ -129,7 +129,7 @@ function Calendario() {
         </div>
       ) : (
         <div>
-          <h2>Horarios Disponibles</h2>
+          <h2 className='horarios'>Horarios Disponibles</h2>
           {availableSlots.map(slot => (
             <div
               key={slot.id}
