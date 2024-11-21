@@ -16,6 +16,10 @@ const Login = () => {
   const [generalError, setGeneralError] = useState('');
   const navigate = useNavigate();  
 
+  const handleMenuClick = () => {
+    navigate('/');
+  };
+
   const getUserRole = async (email) => {
     const db = getFirestore(); // Obtén la instancia de Firestore
     const usersRef = collection(db, 'usuarios'); // Referencia a la colección de usuarios
@@ -70,6 +74,7 @@ const Login = () => {
       setGeneralError(err.message);
     }
 
+
   };
 
   return (
@@ -77,7 +82,7 @@ const Login = () => {
       <div>
         <HeaderLanding/> 
       </div>
-      
+      <div className='login-container-page'>
       <div className="login-container">
         <div className="login-box">
           <h3>Iniciar sesión</h3>
@@ -125,8 +130,9 @@ const Login = () => {
           </p>
         </div>
       </div>
+      <button className='button-atras' onClick={handleMenuClick}>Regresar</button>
+      </div>
     </div>
   );
 };
-
 export default Login;

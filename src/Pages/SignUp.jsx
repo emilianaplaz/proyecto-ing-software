@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { auth, db } from '../credenciales';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { setDoc, doc, getDoc } from 'firebase/firestore'; //
+import { useNavigate } from 'react-router-dom';
 import './SignUp.css';
 import HeaderLanding from '../Components/HeaderLanding';
+
 
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -74,11 +76,18 @@ const SignUp = () => {
     }
   };
 
+    const navigate = useNavigate();
+  
+    const handleMenuClick = () => {
+      navigate('/');
+    };
+
   return (
     <div>
       <div>
         <HeaderLanding />
       </div>
+      <div className='signup-container-page'>
 
       <div className="signup-container">
         <div className="signup-box">
@@ -148,6 +157,9 @@ const SignUp = () => {
           </form>
         </div>
       </div>
+
+      <button  className='button-atras' onClick={handleMenuClick}>Regresar</button>
+    </div>
     </div>
   );
 };
