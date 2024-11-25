@@ -12,7 +12,7 @@
 }
 
 .container {
-    font-family: Arial, sans-serif;
+  font-family: 'Montserrat';
     display: flex;
     flex-direction: column;
     text-align: center;

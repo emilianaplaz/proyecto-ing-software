@@ -28,6 +28,9 @@ const ConfirmarReservaAuditorio = () => {
     setHora(storedHora || "No seleccionada");
   }, []);
 
+  const handleRegresarClick = () => {
+    navigate('/calendario/:auditorioId');}
+
   const handleConfirmarReserva = async () => {
     setIsLoading(true);
     setError("");
@@ -66,6 +69,10 @@ const ConfirmarReservaAuditorio = () => {
         <p><strong>Hora:</strong> {hora}</p>
       </div>
 
+      <div className='buttons-confirmar'>
+
+      <button className='regresar-button' onClick={handleRegresarClick}>Regresar</button>
+
       <button
         className="confirmar1-button"
         onClick={handleConfirmarReserva}
@@ -75,6 +82,9 @@ const ConfirmarReservaAuditorio = () => {
       </button>
 
       {error && <p className="error">{error}</p>}
+
+      
+    </div>
     </div>
   );
 };
