@@ -17,6 +17,8 @@ const SignUp = () => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
+  const navigate = useNavigate();
+
   const handleSignUp = async (e) => {
     e.preventDefault();
     setError('');
@@ -33,6 +35,9 @@ const SignUp = () => {
     // Validar la cédula
     if (!/^\d+$/.test(ci)) {
       setCiError('Solo se permiten números');
+      return;
+    } else if (!/^\d{8}$/.test(ci)) {
+      setCiError('La cédula debe tener 8 números');
       return;
     } else {
       setCiError('');
@@ -71,12 +76,13 @@ const SignUp = () => {
         createdAt: new Date(),
       });
       console.log('Usuario registrado:', name, ci, email);
+      navigate('/');
+
     } catch (err) {
       setError(err.message);
     }
   };
 
-    const navigate = useNavigate();
   
     const handleMenuClick = () => {
       navigate('/');
