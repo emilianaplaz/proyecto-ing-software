@@ -10,3 +10,42 @@
     justify-content: center;
     align-items: center;
 }
+
+.container {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  
+ 
+  
+  
+  
+  /* Contenido */
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  
+  .question-block {
+    margin-bottom: 20px;
+    padding: 10px 30px;
+    background-color: #fff;
+    border-radius: 50px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .question {
+    font-size: 18px;
+    color: #002855;
+    margin: 0 0 5px;
+  }
+  
+  .answer {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+  }
