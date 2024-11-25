@@ -31,6 +31,9 @@ const ConfirmarReservaAuditorio = () => {
     setOwner(storedOwner || "Invitado"); // Default to "Invitado" if no user is logged in
   }, []);
 
+  const handleRegresarClick = () => {
+    navigate('/calendario/:auditorioId');}
+
   const handleConfirmarReserva = async () => {
     setIsLoading(true);
     setError("");
@@ -70,6 +73,10 @@ const ConfirmarReservaAuditorio = () => {
         <p><strong>Reservado por:</strong> {owner}</p> {/* Display the owner */}
       </div>
 
+      <div className='buttons-confirmar'>
+
+      <button className='regresar-button' onClick={handleRegresarClick}>Regresar</button>
+
       <button
         className="confirmar1-button"
         onClick={handleConfirmarReserva}
@@ -79,6 +86,9 @@ const ConfirmarReservaAuditorio = () => {
       </button>
 
       {error && <p className="error">{error}</p>}
+
+      
+    </div>
     </div>
   );
 };
