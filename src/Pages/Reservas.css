@@ -1,43 +1,31 @@
-.container-tus-reservas{
-    text-align: center;
-    background-size: cover;
-    background-position: center;
-    background-image: url("../assets/Images/Pupitres.jpg");
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.reservas-container{
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-image: url("../assets/Images/Pupitres.jpg");
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   }
 
-  .title {
-    padding: 20px;
-    display: flex; /* Añade display: flex */
-    flex-direction: column;
-    align-items: center; /* Centra los elementos verticalmente */
-    justify-content: center; /* Centra los elementos horizontalmente */
-    font-family: 'Montserrat';
-    font-weight: 400;
-    font-size: 3rem;
-    color: #000;
-  }
-
-  .reservas-container {
-    padding: 20px;
-    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(230, 230, 250, 0.9));
-    min-height: 100vh;
-    text-align: center;
-  }
-  
-  /* Título */
   .reservas-title {
-    font-size: 32px;
-    color: #002855;
+    font-size: 40px;
+    padding: 20px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    font-family: 'Montserrat';
+    font-weight: 500;
+    color: #000;
     margin-bottom: 30px;
+
   }
-  
+
   /* Grid de reservas */
   .reservas-grid {
     display: flex;
@@ -48,6 +36,7 @@
   
   /* Tarjeta de reserva */
   .reserva-card {
+    font-family: 'Montserrat';
     width: 250px;
     background: #fff;
     border-radius: 10px;

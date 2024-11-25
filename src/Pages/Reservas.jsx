@@ -47,7 +47,9 @@ const Reservas = () => {
   if (error) return <p className="error">{error}</p>;
 
   return (
-    <div className="reservas-container">
+    <div className="reservas-container" >
+      <Header/>
+      
       <h1 className="reservas-title">Reservas</h1>
       <div className="reservas-grid">
         {reservas.length === 0 ? (
