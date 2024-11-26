@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { auth, db } from '../credenciales';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { setDoc, doc, getDoc } from 'firebase/firestore'; //
+import { useNavigate } from 'react-router-dom';
 import './SignUp.css';
 import HeaderLanding from '../Components/HeaderLanding';
+
 
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -14,6 +16,8 @@ const SignUp = () => {
   const [ciError, setCiError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+
+  const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -31,6 +35,9 @@ const SignUp = () => {
     // Validar la cédula
     if (!/^\d+$/.test(ci)) {
       setCiError('Solo se permiten números');
+      return;
+    } else if (!/^\d{8}$/.test(ci)) {
+      setCiError('La cédula debe tener 8 números');
       return;
     } else {
       setCiError('');
@@ -69,16 +76,24 @@ const SignUp = () => {
         createdAt: new Date(),
       });
       console.log('Usuario registrado:', name, ci, email);
+      navigate('/');
+
     } catch (err) {
       setError(err.message);
     }
   };
+
+  
+    const handleMenuClick = () => {
+      navigate('/');
+    };
 
   return (
     <div>
       <div>
         <HeaderLanding />
       </div>
+      <div className='signup-container-page'>
 
       <div className="signup-container">
         <div className="signup-box">
@@ -148,6 +163,9 @@ const SignUp = () => {
           </form>
         </div>
       </div>
+
+      <button  className='button-atras' onClick={handleMenuClick}>Regresar</button>
+    </div>
     </div>
   );
 };

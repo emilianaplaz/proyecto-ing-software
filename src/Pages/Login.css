@@ -9,6 +9,13 @@ body {
     justify-content: center;
     align-items: center;
   }
+
+  .login-container-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   
   .login-container {
     display: flex;

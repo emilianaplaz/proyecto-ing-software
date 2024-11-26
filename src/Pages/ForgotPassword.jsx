@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { auth } from '../credenciales'; 
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 import './ForgotPassword.css'; 
 import HeaderLanding from '../Components/HeaderLanding';
 
@@ -36,14 +37,21 @@ const ForgotPassword = () => {
     } catch (err) {
       setError(err.message);
     }
+
   };
+
+  const navigate = useNavigate();
+  
+    const handleMenuClick = () => {
+      navigate('/');
+    };
 
   return (
     <div>
       <div>
           <HeaderLanding/> 
       </div>
-
+      <div className='forgot-password-container-page'>
       <div className="forgot-password-container">
         <div className="forgot-password-box">
           <h3>Restablecer Contraseña</h3>
@@ -60,6 +68,8 @@ const ForgotPassword = () => {
             <button type="submit">Enviar Correo</button>
           </form>
         </div>
+      </div>
+      <button className='button-atras' onClick={handleMenuClick}>Regresar</button>
       </div>
       </div>
   );

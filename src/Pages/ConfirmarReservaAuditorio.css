@@ -13,7 +13,7 @@
 
 
   .title-confirmar1 {
-    padding: 20px;
+    padding: 10px;
     display: flex; 
     flex-direction: column;
     align-items: center; 
@@ -31,19 +31,25 @@
     justify-content: center; 
     font-family: 'Montserrat';
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #000;
 }
 
 .confirmar1-box {
     background: white;
     border-radius: 50px;
-    padding: 40px;
+    padding: 60px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 300px;
     color:#000;
+    font-family: 'Montserrat';
+    font-size: 1.3rem;
   }
+
+.buttons-confirmar {
+  gap: 60px;
+}
 
 .confirmar1-button{
     background-color: #1f2a44;
@@ -51,5 +57,16 @@
     border-radius: 50px;
     font-family: 'Montserrat';
     font-weight: 400;
-    margin-top: 20px;
+    margin-top: 40px;
+    padding: 20px;
+}
+
+.regresar-button {
+    background-color: #1f2a44;
+    color: white;
+    border-radius: 50px;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    margin-top: 40px;
+    padding: 20px;
 }

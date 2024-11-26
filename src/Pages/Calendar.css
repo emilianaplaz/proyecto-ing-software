@@ -82,6 +82,16 @@ color: #ff9900 !important;
 }
 
 /* Estilos de los horarios disponibles */
+
+.horarios {
+  padding: 20px;  
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 3rem;
+    color: #000;
+
+}
+
 .available-slots {
   width: 80%;
   max-width: 800px;
@@ -118,6 +128,8 @@ color: #ff9900 !important;
   font-family: 'Montserrat';
   font-weight: 400;
   margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .horas-container{

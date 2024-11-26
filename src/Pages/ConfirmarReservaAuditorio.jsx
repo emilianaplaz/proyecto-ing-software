@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from 'react';
 import Header from '../Components/Header';
-import './ConfirmarReservaAuditorio.css';
-import { getFirestore, doc, collection, addDoc } from "firebase/firestore";
-import { useNavigate } from 'react-router-dom';
 
+
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import "./ConfirmarReservaAuditorio.css";
 
 const ConfirmarReservaAuditorio = () => {
   const [auditorio, setAuditorio] = useState("");
   const [fecha, setFecha] = useState("");
   const [hora, setHora] = useState("");
-  const [estado, seEstado] = useState("");
+  const [estado, setEstado] = useState(""); // Default status as "Pendiente"
+  const [owner, setOwner] = useState(""); // New owner state
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const navigate = useNavigate();  
-
+  const navigate = useNavigate();
 
   const db = getFirestore();
 
@@ -22,11 +23,16 @@ const ConfirmarReservaAuditorio = () => {
     const storedAuditorio = localStorage.getItem("auditorio-seleccionado");
     const storedFecha = localStorage.getItem("fecha-seleccionada");
     const storedHora = localStorage.getItem("hora-seleccionada");
+    const storedOwner = localStorage.getItem("userId"); // Retrieve owner from localStorage
 
     setAuditorio(storedAuditorio || "No seleccionado");
     setFecha(storedFecha || "No seleccionada");
     setHora(storedHora || "No seleccionada");
+    setOwner(storedOwner || "Invitado"); // Default to "Invitado" if no user is logged in
   }, []);
+
+  const handleRegresarClick = () => {
+    navigate('/calendario/:auditorioId');}
 
   const handleConfirmarReserva = async () => {
     setIsLoading(true);
@@ -38,11 +44,11 @@ const ConfirmarReservaAuditorio = () => {
         fecha,
         hora,
         estado,
-        // You can add additional fields, such as user ID or timestamp, if needed
+        owner, // Add owner field
+        timestamp: new Date().toISOString(), // Optional: Add a timestamp for tracking
       });
 
-      // alert("Reserva confirmada exitosamente.");
-
+      // Navigate to success page
       navigate("/reserva-exitosa");
     } catch (error) {
       console.error("Error al confirmar reserva:", error);
@@ -53,7 +59,7 @@ const ConfirmarReservaAuditorio = () => {
   };
 
   return (
-    <div className='container-confirma1'>
+    <div className="container-confirma1">
       <Header />
       <div className="confirmar-reserva-container">
         <h1 className="title-confirmar1">Resumen de reserva</h1>
@@ -64,7 +70,12 @@ const ConfirmarReservaAuditorio = () => {
         <p><strong>Auditorio:</strong> {auditorio}</p>
         <p><strong>Fecha:</strong> {fecha}</p>
         <p><strong>Hora:</strong> {hora}</p>
+        <p><strong>Reservado por:</strong> {owner}</p> {/* Display the owner */}
       </div>
+
+      <div className='buttons-confirmar'>
+
+      <button className='regresar-button' onClick={handleRegresarClick}>Regresar</button>
 
       <button
         className="confirmar1-button"
@@ -75,6 +86,9 @@ const ConfirmarReservaAuditorio = () => {
       </button>
 
       {error && <p className="error">{error}</p>}
+
+      
+    </div>
     </div>
   );
 };

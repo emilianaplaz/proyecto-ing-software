@@ -16,7 +16,7 @@ const ReservaEnEspera = () => {
       <Header />
       <div className="info-reserva-espera">
         <div className='title-reserva-espera' >Espere a que su solicitud sea aprobada</div>
-        <img src={enEspera}  />
+        <img src={enEspera} style={{ width: '450px', height: 'auto' }} />
         <button className="regresar-menu-espera" onClick={handleMenuClick}>Regresar al menú principal</button>
       </div>
     </div>

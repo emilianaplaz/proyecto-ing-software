@@ -16,7 +16,7 @@ const ReservaExitosa = () => {
       <Header />
       <div className="info-reserva-exitosa">
         <div className='title-reserva-exitosa' >El espacio se ha reservado exitosamente</div>
-        <img src={checkImage}  />
+        <img src={checkImage} style={{ width: '450px', height: 'auto' }} />
         <button className="regresar-menu" onClick={handleMenuClick}>Regresar al menú principal</button>
       </div>
     </div>
