@@ -3,8 +3,8 @@
     background-size: cover;
     background-position: center;
     background-image: url("../assets/Images/Pupitres.jpg");
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,6 +17,7 @@
     flex-direction: column;
     text-align: center;
     padding: 20px;
+
   }
   
  

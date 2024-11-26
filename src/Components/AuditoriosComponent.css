@@ -34,4 +34,9 @@
     
   }
 
+  .auditorio-button.selected {
+    border-color: orange;
+    
+  }
+
  

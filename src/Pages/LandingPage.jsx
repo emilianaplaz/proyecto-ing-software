@@ -59,7 +59,7 @@ function LandingPage() {
         <HeaderLanding /> 
       </div> 
 
-      <div className="container">
+      <div className="container-landing">
         <div className="container-left">
           <div className="title-landing">
             <h1 className="title-landing">Reserva tus salones</h1>

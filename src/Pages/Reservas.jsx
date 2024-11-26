@@ -1,9 +1,9 @@
 
 import Header from '../Components/Header';
-
-import React, { useState, useEffect } from "react";
-import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
 import "./Reservas.css";
+import React, { useState, useEffect } from "react";
+import { getFirestore, collection, query, where, getDocs, deleteDoc, doc } from "firebase/firestore";
+
 
 const Reservas = () => {
   const [reservas, setReservas] = useState([]);
@@ -43,11 +43,26 @@ const Reservas = () => {
     fetchReservas();
   }, [db]);
 
+  // Function to delete a reservation with confirmation
+  const handleDeleteReserva = async (reservaId) => {
+    const confirmDelete = window.confirm("¿Estás seguro de que deseas eliminar esta reserva?");
+    if (!confirmDelete) return;
+
+    try {
+      await deleteDoc(doc(db, "reservas-auditorios", reservaId));
+      setReservas((prevReservas) => prevReservas.filter((reserva) => reserva.id !== reservaId));
+    } catch (err) {
+      console.error("Error deleting reserva:", err);
+      setError("No se pudo eliminar la reserva.");
+    }
+  };
+
   if (isLoading) return <p className="loading">Cargando reservas...</p>;
   if (error) return <p className="error">{error}</p>;
 
   return (
     <div className="reservas-container">
+      <Header />
       <h1 className="reservas-title">Reservas</h1>
       <div className="reservas-grid">
         {reservas.length === 0 ? (
@@ -58,7 +73,10 @@ const Reservas = () => {
               <h2 className="reserva-aula">{reserva.auditorio}</h2>
               <p className="reserva-info">Fecha: {reserva.fecha}</p>
               <p className="reserva-info">Hora: {reserva.hora}</p>
-              <button className="reserva-delete">
+              <button
+                className="reserva-delete"
+                onClick={() => handleDeleteReserva(reserva.id)}
+              >
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png"
                   alt="Eliminar"
