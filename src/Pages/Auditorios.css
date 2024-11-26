@@ -12,10 +12,11 @@
 }
 
 .auditorio:hover {
+    background-color: orange;
 }
 
 .auditorio.selected {
-    /* background-color: orange;  */
+    background-color: orange; 
 }
 
 

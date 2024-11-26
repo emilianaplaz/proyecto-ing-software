@@ -53,6 +53,12 @@
   cursor: pointer;
 }
 
+.disabled {
+  background-color: #ccc; /* Color gris */
+  pointer-events: none; /* Deshabilitar la interacción */
+  opacity: 0.6; /* Translucidez */
+}
+
 .react-calendar__tile {
 padding: 15px;
 text-align: center;
@@ -139,7 +145,7 @@ color: #ff9900 !important;
   align-items: center;
 }
 
-.available-slot {
+/* .available-slot {
   padding: 10px;
   margin: 5px;
   border-radius: 5px;
@@ -149,7 +155,7 @@ color: #ff9900 !important;
 .available-slot.selected {
   background-color: orange;
   color: white;
-}
+} */
 
 .gray-slot {
   background-color: #d3d3d3; /* Light gray for unavailable slots */
