@@ -60,11 +60,6 @@ function CalendarAulas() {
     return isPastDate || isWeekend;
   };
 
-  // Disable the slot 8:45 - 10:15
-  const disableSlot = (slot) => {
-    return slot.horario === "8:45 - 10:15";
-  };
-
   // Generating sample slots
   const sampleSlots = [
     { id: "1", horario: "7:00 - 8:30" },
@@ -82,23 +77,17 @@ function CalendarAulas() {
       {isCalendarView ? (
         <div className="horas-container">
           <h1>Selecciona tu fecha</h1>
-          
           <Calendar
             onChange={handleDateChange}
             value={selectedDate}
             tileDisabled={disableDates}
             locale="es-ES"
           />
-          <button className="back-button" onClick={handleBackToCalendar}>
-            Regresar
-          </button>
           {isDateSelected && (
             <button className="continuar-button" onClick={handleContinueToSlots}>
               Continuar
             </button>
           )}
-
-            
         </div>
       ) : (
         <div>
@@ -106,8 +95,8 @@ function CalendarAulas() {
           {sampleSlots.map((slot) => (
             <div
               key={slot.id}
-              className={`available-slot ${selectedSlot === slot ? "selected" : ""} ${disableSlot(slot) ? 'disabled' : ''}`}
-              onClick={() => !disableSlot(slot) && handleSlotSelection(slot)}
+              className={`available-slot ${selectedSlot === slot ? "selected" : ""}`}
+              onClick={() => handleSlotSelection(slot)} // No more disable logic
             >
               {slot.horario}
             </div>
