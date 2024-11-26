@@ -2,7 +2,9 @@
   display: flex; /* Use Flexbox to position children in a row */
   justify-content: space-between; /* Optional: add space between the containers */
   align-items: center; /* Center items vertically */
-  width: 100%;
+  /* width: 100%; */
+  background-image: url("../assets/Images/Pupitres.jpg");
+
 }
 
 .container-left,
@@ -98,3 +100,5 @@
   transform: scale(1.05); /* Efecto de escalado */
   color: aliceblue;
 }
+
+

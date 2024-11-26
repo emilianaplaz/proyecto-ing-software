@@ -11,6 +11,14 @@
     background-image: url("../assets/Images/Pupitres.jpg");
 }
 
+.auditorio:hover {
+    background-color: #ddd;
+}
+
+.auditorio.selected {
+    background-color: orange; 
+}
+
 
 .auditorio-title {
       padding: 20px;  
