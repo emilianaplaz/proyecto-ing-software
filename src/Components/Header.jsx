@@ -38,11 +38,11 @@ function Header() {
                 <li>
                   <Link to="/mis-reservas" className='link-header-negro'>Reservas</Link> 
                 </li>
-                {userRole === 'administrador' && (
+                {/* {userRole === 'administrador' && (
                   <li>
                     <Link to="/solicitudes" className='link-header-negro'>Ver Solicitudes</Link>
                   </li>
-                )}
+                )} */}
                 <li>
                   <Link to="/preguntas-frecuentes" className='link-header-negro'>Preguntas</Link> 
                 </li>

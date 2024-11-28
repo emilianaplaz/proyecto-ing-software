@@ -49,6 +49,12 @@ function CalendarAulas() {
         navigate("/aulas");
       }
     };
+
+    const disablePastDates = ({ date }) => {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // Set time to 00:00 for comparison
+      return date < today; // Disable past dates
+    };
   
     // Disable weekends in the calendar
     const disableWeekends = ({ date }) => {
@@ -77,7 +83,7 @@ function CalendarAulas() {
             <Calendar 
               onChange={handleDateChange} 
               value={selectedDate} 
-              tileDisabled={disableWeekends}
+              tileDisabled={({ date }) => disablePastDates({ date }) || disableWeekends({ date })}
               locale="es-ES"
             />
             {isDateSelected && (

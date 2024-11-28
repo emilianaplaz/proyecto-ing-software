@@ -88,7 +88,7 @@ const Reservas = () => {
 </h2>
               <p className="reserva-info">Fecha: {reserva.fecha}</p>
               <p className="reserva-info">Hora: {reserva.hora}</p>
-              <p className="reserva-info">Estado: Pendiente</p>
+              {/* <p className="reserva-info">Estado: Pendiente</p> */}
               <button
                 className="reserva-delete"
                 onClick={() => handleDeleteReserva(reserva.id)}

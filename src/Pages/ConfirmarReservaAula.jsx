@@ -45,9 +45,9 @@ const ConfirmarReservaAula = () => {
         timestamp: new Date().toISOString(), // Optional: Add a timestamp for tracking
       });
 
-      alert("Solicitud enviada exitosamente.");
+      // alert("Solicitud enviada exitosamente.");
 
-      navigate("/reserva-en-espera");
+      navigate("/reserva-exitosa");
     } catch (error) {
       console.error("Error al confirmar reserva:", error);
       setError("Error al confirmar la reserva. Inténtelo nuevamente.");
