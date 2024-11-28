@@ -10,6 +10,7 @@ const ConfirmarReservaAula = () => {
   const [fecha, setFecha] = useState("");
   const [hora, setHora] = useState("");
   const [estado, seEstado] = useState("");
+  const [owner, setOwner] = useState(""); // New owner state
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();  
@@ -22,10 +23,12 @@ const ConfirmarReservaAula = () => {
     const storedAula = localStorage.getItem("aula-seleccionado");
     const storedFecha = localStorage.getItem("fecha-seleccionada");
     const storedHora = localStorage.getItem("hora-seleccionada");
+    const storedOwner = localStorage.getItem("userId"); // Retrieve owner from localStorage
 
     setAula(storedAula || "No seleccionado");
     setFecha(storedFecha || "No seleccionada");
     setHora(storedHora || "No seleccionada");
+    setOwner(storedOwner || "Invitado"); // Default to "Invitado" if no user is logged in
   }, []);
 
   const handleConfirmarReserva = async () => {
@@ -38,11 +41,13 @@ const ConfirmarReservaAula = () => {
         fecha,
         hora,
         estado,
+        owner,
+        timestamp: new Date().toISOString(), // Optional: Add a timestamp for tracking
       });
 
-      alert("Reserva confirmada exitosamente.");
+      alert("Solicitud enviada exitosamente.");
 
-      navigate("/reserva-exitosa");
+      navigate("/reserva-en-espera");
     } catch (error) {
       console.error("Error al confirmar reserva:", error);
       setError("Error al confirmar la reserva. Inténtelo nuevamente.");
@@ -63,6 +68,8 @@ const ConfirmarReservaAula = () => {
         <p><strong>Aula:</strong> {aula}</p>
         <p><strong>Fecha:</strong> {fecha}</p>
         <p><strong>Hora:</strong> {hora}</p>
+        <p><strong>Reservado por:</strong> {owner}</p>
+      
       </div>
 
       <button

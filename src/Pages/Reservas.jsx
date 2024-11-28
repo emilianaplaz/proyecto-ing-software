@@ -21,17 +21,31 @@ const Reservas = () => {
         }
 
         // Query reservations associated with the user's email
-        const reservasQuery = query(
+        const reservasQuery1 = query(
           collection(db, "reservas-auditorios"),
           where("owner", "==", userEmail)
         );
 
-        const querySnapshot = await getDocs(reservasQuery);
-        const fetchedReservas = querySnapshot.docs.map((doc) => ({
+        const reservasQuery2 = query(
+          collection(db, "reservas-aulas"),
+           where("owner", "==", userEmail)
+        );
+
+        const querySnapshot1 = await getDocs(reservasQuery1);
+        const querySnapshot2 = await getDocs(reservasQuery2);
+
+        const fetchedReservas1 = querySnapshot1.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        setReservas(fetchedReservas);
+
+        const fetchedReservas2 = querySnapshot2.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        const combinedReservas = fetchedReservas1.concat(fetchedReservas2);
+        setReservas(combinedReservas);
       } catch (err) {
         console.error("Error fetching reservas:", err);
         setError("No se pudo cargar la información de las reservas.");
@@ -70,9 +84,11 @@ const Reservas = () => {
         ) : (
           reservas.map((reserva) => (
             <div key={reserva.id} className="reserva-card">
-              <h2 className="reserva-aula">{reserva.auditorio}</h2>
+              <h2 className="reserva-aula">{reserva.aula ? reserva.aula : reserva.auditorio}
+</h2>
               <p className="reserva-info">Fecha: {reserva.fecha}</p>
               <p className="reserva-info">Hora: {reserva.hora}</p>
+              <p className="reserva-info">Estado: Pendiente</p>
               <button
                 className="reserva-delete"
                 onClick={() => handleDeleteReserva(reserva.id)}

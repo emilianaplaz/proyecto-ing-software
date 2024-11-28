@@ -23,3 +23,13 @@
     font-size: 3rem;
     color: #000;
   }
+
+  .button-continuar-aulas{
+    background-color: #1f2a44;
+    color: white;
+    border-radius: 50px;
+    font-family: 'Montserrat';
+    font-weight: 400;
+  }
+
+ 

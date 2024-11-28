@@ -12,6 +12,7 @@ import Auditorios from './Pages/Auditorios';
 import Aulas from './Pages/Aulas'
 import Calendario from './Pages/Calendar';
 import ConfirmarReservaAuditorio from './Pages/ConfirmarReservaAuditorio';
+import CofirmarReservaAula from './Pages/ConfirmarReservaAula';
 import ReservaExitosa from './Pages/ReservaExitosa';
 import ReservaEnEspera from './Pages/ReservaEnEspera';
 import CalendarAulas from './Pages/CalendarAulas';
@@ -37,6 +38,7 @@ function App() {
         <Route path="/calendario/:auditorioId" element={<Calendario />} />
         <Route path="/aulas" element={<Aulas />} />
         <Route path="/confirmar-reserva-auditorio" element={<ConfirmarReservaAuditorio />} />
+        <Route path="/confirmar-reserva-aula" element={<CofirmarReservaAula />} />
         <Route path="/reserva-exitosa" element={<ReservaExitosa />} />
         <Route path="/reserva-en-espera" element={<ReservaEnEspera />} />
         <Route path="/calendario-aulas" element={<CalendarAulas />} />
